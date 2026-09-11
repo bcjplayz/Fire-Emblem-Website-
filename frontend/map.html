@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fire Emblem Awakening Overview</title>
+    <link rel="stylesheet" href="mapScreen.css" />
+    <script src="characterSwitch.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="title" href="home.html">Fire Emblem: Awakening</a>
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="#characters">Characters</a>
+        <a href="#supports">Supports</a>
+        <a class="selected" href="map.html">World Overview</a>
+      </nav>
+    </header>
+
+    <main class="overview-page">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">World Overview</p>
+          <h1>Explore the world of Ylisse</h1>
+          <p>
+            Fire Emblem Awakening blends a kingdom-spanning story with tactical battles,
+            character-driven relationships, and more.
+          </p>
+        </div>
+      </section>
+
+      <section class="overview-section">
+        <div class="section-heading">
+          <p class="eyebrow">Notable Cast</p>
+        </div>
+
+        <div class="character-list" id="characters">
+          <div class="character-card">
+            <span class="character-name">Chrom</span>
+            <img src="./chrom.png" alt="Chrom" class="character-image" />
+          </div>
+          <div class="character-card">
+            <span class="character-name">Lucina</span>
+            <img src="./marth.png" alt="Lucina" class="character-image" />
+            <button class="character-button change-img">Change Image</button>
+            <span class="character-role">Future Guardian</span>
+          </div>
+          <div class="character-card">
+            <span class="character-name">Robin</span>
+            <img src="./Robin.png" alt="Robin" class="character-image" />
+            <span class="character-role">Tactician</span>
+            <button class="character-button change-img">Change Image</button>
+          </div>
+          <div class="character-card">
+            <span class="character-name">Morgan</span>
+            <span class="character-role">Child of Fate</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Awakening notes</span>
+      <span>Fan-made page</span>
+    </footer>
+  </body>
+</html>

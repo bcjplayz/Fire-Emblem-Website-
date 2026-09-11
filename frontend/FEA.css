@@ -1,0 +1,43 @@
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./charactersBG.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #f0ebd8;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.topbar {
+  align-items: center;
+  background: rgba(20, 25, 30, 0.85);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 8%;
+}
+
+.title,
+nav a {
+  color: #f0ebd8;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a:hover,
+nav .selected {
+  color: #d7a94f;
+}
+
+footer {
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 8%;
+  position: fixed;
+  width: 84%;
+}

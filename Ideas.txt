@@ -1,0 +1,7 @@
+Children Unit Inheritance Tracker:
+
+Build a visual reference guide showing child units alongside potential parents to map hair colours and modifier adjustments.HTML Elements: Utilise robust <table> components with complex groupings (<thead>, <tbody>) or multi-column grids.CSS Focus: Use alternating row colours (:nth-child) for data readability, absolute element placement to visually position asset badges, and media queries to cleanly drop columns on smaller mobile screen breakpoints 
+
+Tactician’s Custom Avatar Creator:
+
+Build a static replica of the "Create a Robin" customisation screen from the start of the game.HTML Elements: Deep dive into <form> elements including <select> dropdowns for Asset/Flaw choices, radio buttons for gender, and range inputs for body type sliders.CSS Focus: Styling custom form fields (overriding default browser inputs), customising checkboxes, and setting up clean multi-column form alignments

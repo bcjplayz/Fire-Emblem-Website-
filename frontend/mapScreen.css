@@ -1,0 +1,210 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(rgba(8, 12, 18, 0.55), rgba(8, 12, 18, 0.75)), url('./Awakening_Map_official_art.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #f0ebd8;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.topbar {
+  align-items: center;
+  background: rgba(20, 25, 30, 0.85);
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 8%;
+}
+
+.title,
+nav a {
+  color: #f0ebd8;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a:hover,
+nav .selected {
+  color: #d7a94f;
+}
+
+.overview-page {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 48px 24px 80px;
+}
+
+.hero {
+  background: rgba(15, 18, 24, 0.72);
+  border: 1px solid rgba(215, 169, 79, 0.4);
+  border-radius: 18px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 2fr 1fr;
+  margin-bottom: 32px;
+  padding: 32px;
+}
+
+.hero-copy h1 {
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  line-height: 1.1;
+  margin: 0 0 16px;
+}
+
+.eyebrow {
+  color: #d7a94f;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+
+.hero-copy p,
+.info-card p,
+.region-text,
+.character-role {
+  color: #dfe3d3;
+  line-height: 1.7;
+}
+
+.hero-stats {
+  display: grid;
+  gap: 18px;
+}
+
+.hero-stats div {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px 16px;
+}
+
+.stat-label {
+  color: #c2c5b8;
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.info-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  margin-bottom: 40px;
+}
+
+.info-card,
+.region-item,
+.character-card,
+.overview-section {
+  background: rgba(15, 18, 24, 0.72);
+  border: 1px solid rgba(215, 169, 79, 0.25);
+  border-radius: 16px;
+}
+
+.info-card {
+  padding: 24px 20px;
+}
+
+.info-card h2,
+.section-heading h2 {
+  margin-top: 0;
+}
+
+.overview-section {
+  padding: 28px 24px;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.region-list {
+  display: grid;
+  gap: 18px;
+}
+
+.region-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px;
+}
+
+.region-name {
+  color: #f0ebd8;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.character-list {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+}
+
+.character-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 18px;
+}
+
+.character-name {
+  color: #f0ebd8;
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+footer {
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 8%;
+  position: fixed;
+  width: 84%;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .info-grid,
+  .character-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar,
+  nav,
+  footer {
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .info-grid,
+  .character-list {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-page {
+    padding-top: 24px;
+  }
+}
