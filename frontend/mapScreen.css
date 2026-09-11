@@ -3,7 +3,7 @@
 }
 
 body {
-  background-image: linear-gradient(rgba(8, 12, 18, 0.55), rgba(8, 12, 18, 0.75)), url('/img/Awakening_Map_official_art.jpg');
+  background-image: linear-gradient(rgba(62, 64, 68, 0.55), rgba(53, 55, 59, 0.75)), url('/img/BGbg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
