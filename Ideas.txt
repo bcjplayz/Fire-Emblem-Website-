@@ -5,5 +5,3 @@ Build a visual reference guide showing child units alongside potential parents t
 Tactician’s Custom Avatar Creator:
 
 Build a static replica of the "Create a Robin" customisation screen from the start of the game.HTML Elements: Deep dive into <form> elements including <select> dropdowns for Asset/Flaw choices, radio buttons for gender, and range inputs for body type sliders.CSS Focus: Styling custom form fields (overriding default browser inputs), customising checkboxes, and setting up clean multi-column form alignments
-
-vesvdbhsvdbhsvdbjh

@@ -1,6 +1,6 @@
 const image_data = [
-  { alt: ["Marth", "Lucina"], options: ["marth.png", "lucina.png"] },
-  { alt: ["Robin", "RobinF"], options: ["Robin.png", "RobinF.png"] }
+  { alt: ["Marth", "Lucina"], options: ["/img/Marth.png", "/img/lucina.png"], name: ["Marth", "Lucina"] },
+  { alt: ["Robin", "RobinF"], options: ["/img/Robin.png", "/img/RobinF.png"], name: ["Robin", "Robin"] },
 ];
 
 function getFileName(src) {
@@ -20,6 +20,7 @@ function characterButton(img, index) {
     ? 0
     : (currentIndex + 1) % currentSet.options.length;
   //img.parentElement.textContent = currentSet.alt[nextIndex];
+  img.closest(".character-card").querySelector("span").textContent = currentSet.name[nextIndex];
   img.src = currentSet.options[nextIndex];
   img.alt = currentSet.alt[nextIndex];
 }

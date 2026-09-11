@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fire Emblem Awakening Overview</title>
-    <link rel="stylesheet" href="mapScreen.css" />
-    <script src="characterSwitch.js" defer></script>
+    <link rel="stylesheet" href="/frontend/mapScreen.css" />
+    <script src="/backend/characterSwitch.js" defer></script>
   </head>
   <body>
     <header class="topbar">
-      <a class="title" href="home.html">Fire Emblem: Awakening</a>
+      <a class="title" href="/frontend/home.html">Fire Emblem: Awakening</a>
       <nav>
-        <a href="home.html">Home</a>
-        <a href="#characters">Characters</a>
-        <a href="#supports">Supports</a>
-        <a class="selected" href="map.html">World Overview</a>
+        <a href="/frontend/home.html">Home</a>
+        <a href="/frontend/map.html#characters">Characters</a>
+        <a href="/frontend/map.html#supports">Supports</a>
+        <a class="selected" href="/frontend/map.html">World Overview</a>
       </nav>
     </header>
 
@@ -32,36 +32,31 @@
 
       <section class="overview-section">
         <div class="section-heading">
-          <p class="eyebrow">Notable Cast</p>
+          <p class="eyebrow">Cast</p>
         </div>
 
         <div class="character-list" id="characters">
           <div class="character-card">
             <span class="character-name">Chrom</span>
-            <img src="./chrom.png" alt="Chrom" class="character-image" />
+            <img src="/img/Chrom.png" alt="Chrom" class="character-image" />
           </div>
           <div class="character-card">
             <span class="character-name">Lucina</span>
-            <img src="./marth.png" alt="Lucina" class="character-image" />
-            <button class="character-button change-img">Change Image</button>
+            <img src="/img/Marth.png" alt="Lucina" class="character-image" width="150" height="200" />
             <span class="character-role">Future Guardian</span>
+            <button class="character-button change-img">Remove Mask</button>
           </div>
           <div class="character-card">
             <span class="character-name">Robin</span>
-            <img src="./Robin.png" alt="Robin" class="character-image" />
+            <img src="/img/Robin.png" alt="Robin" class="character-image" width="150" height="200" />
             <span class="character-role">Tactician</span>
-            <button class="character-button change-img">Change Image</button>
-          </div>
-          <div class="character-card">
-            <span class="character-name">Morgan</span>
-            <span class="character-role">Child of Fate</span>
+            <button class="character-button change-img">Change Gender</button>
           </div>
         </div>
       </section>
     </main>
 
     <footer>
-      <span>Awakening notes</span>
       <span>Fan-made page</span>
     </footer>
   </body>
