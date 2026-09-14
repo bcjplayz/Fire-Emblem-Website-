@@ -92,7 +92,22 @@ const characters = [
         const generateBtn = document.getElementById('generateBtn');
         const result = document.getElementById('result');
 
+        if (!motherSelect || !fatherSelect || !generateBtn || !result) {
+            throw new Error('Support page is missing required form elements.');
+        }
+
+        function isInvalidParentPair(motherId, fatherId) {
+            return !motherId || !fatherId || motherId === fatherId;
+        }
+
         function populateSelects() {
+            if (!motherSelect || !fatherSelect) {
+                return;
+            }
+
+            motherSelect.innerHTML = '';
+            fatherSelect.innerHTML = '';
+
             characters.forEach((character) => {
                 const motherOption = document.createElement('option');
                 motherOption.value = character.id;
@@ -107,6 +122,18 @@ const characters = [
 
             motherSelect.value = 'lissa';
             fatherSelect.value = 'chrom';
+            if (supportRankSelect) {
+                supportRankSelect.value = 'C';
+            }
+        }
+
+        function enforceValidParents() {
+            if (!isInvalidParentPair(motherSelect.value, fatherSelect.value)) {
+                return true;
+            }
+
+            result.innerHTML = '<p>Please choose two different parents before generating a child.</p>';
+            return false;
         }
 
         function getCharacterById(id) {
@@ -126,9 +153,18 @@ const characters = [
         }
 
         function generateChild() {
+            if (!enforceValidParents()) {
+                return;
+            }
+
             const mother = getCharacterById(motherSelect.value);
             const father = getCharacterById(fatherSelect.value);
-            const rank = supportRankSelect.value;
+            const rank = supportRankSelect ? supportRankSelect.value : 'C';
+
+            if (!mother || !father) {
+                result.innerHTML = '<p>Choose valid mother and father selections.</p>';
+                return;
+            }
 
             const exactMatch = knownChildren[`${mother.id}|${father.id}`] || knownChildren[`${father.id}|${mother.id}`];
 
@@ -137,16 +173,30 @@ const characters = [
                 skills: mergeSkills(mother, father, rank)
             };
 
+            const skillMarkup = child.skills.map((skill) => `<span class="skill">${skill}</span>`).join(', ');
+
             result.innerHTML = `
                 <h2>${child.name}</h2>
                 <p><strong>Mother:</strong> ${mother.name} | <strong>Father:</strong> ${father.name}</p>
                 <p><strong>Support Rank:</strong> ${rank}</p>
-                <div class="skills">
-                    ${child.skills.map((skill) => `<span class="skill">${skill}</span>`).join('')}
-                </div>
+                <p><strong>Abilities:</strong> ${skillMarkup}</p>
             `;
         }
 
-        populateSelects();
-        generateBtn.addEventListener('click', generateChild);
-        generateChild();
+        function initSupportPage() {
+            if (!motherSelect || !fatherSelect || !generateBtn || !result) {
+                return;
+            }
+
+            populateSelects();
+            motherSelect.addEventListener('change', enforceValidParents);
+            fatherSelect.addEventListener('change', enforceValidParents);
+            generateBtn.addEventListener('click', generateChild);
+            generateChild();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSupportPage);
+        } else {
+            initSupportPage();
+        }
