@@ -1,0 +1,96 @@
+* {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1d2333, #2a3350);
+            color: #f2f4f8;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .panel {
+            width: min(700px, 90vw);
+            background: rgba(17, 23, 36, 0.9);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            margin-top: 0;
+            text-align: center;
+            color: #f7d66d;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        select, button {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 1rem;
+        }
+
+        select {
+            background: #ecf0f7;
+            color: #121826;
+        }
+
+        button {
+            margin-top: 10px;
+            background: linear-gradient(135deg, #4d8ef7, #6b7cff);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        .result {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .result h2 {
+            margin-top: 0;
+            color: #a5d8ff;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .skill {
+            background: #27314a;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
