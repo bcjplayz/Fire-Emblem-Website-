@@ -14,6 +14,87 @@ body {
   min-height: 100vh;
 }
 
+.panel {
+  background: rgba(15, 18, 24, 0.8);
+  border: 1px solid rgba(215, 169, 79, 0.35);
+  border-radius: 18px;
+  margin: 40px auto;
+  max-width: 980px;
+  padding: 28px;
+}
+
+.panel h1 {
+  margin-top: 0;
+}
+
+.controls {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  margin-bottom: 20px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 700;
+}
+
+select,
+button {
+  border: 1px solid rgba(215, 169, 79, 0.35);
+  border-radius: 8px;
+  font: inherit;
+  padding: 10px 12px;
+}
+
+button {
+  background: #d7a94f;
+  color: #1d1f22;
+  cursor: pointer;
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.result,
+.family-legend {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+
+.result {
+  margin-bottom: 20px;
+}
+
+.family-legend h2 {
+  margin-top: 0;
+}
+
+.family-legend table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.family-legend th,
+.family-legend td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 8px;
+  text-align: left;
+}
+
+.family-legend tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+@media (max-width: 640px) {
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}
+
 .topbar {
   align-items: center;
   background: rgba(20, 25, 30, 0.85);
