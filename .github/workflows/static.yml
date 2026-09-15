@@ -40,6 +40,8 @@ jobs:
         with:
           # Points to the 'root' folder visible in the repository root
           path: '.'
+          # Prevents GitHub from filtering out the 'root' folder
+          include-hidden-files: true
 
       - name: Deploy to GitHub Pages
         id: deployment
