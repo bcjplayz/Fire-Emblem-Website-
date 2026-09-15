@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # Modify '.' if your static files reside in a subdirectory (e.g., './dist' or './public')
-          path: '.' 
+          path: './root' 
 
       - name: Deploy to GitHub Pages
         id: deployment
