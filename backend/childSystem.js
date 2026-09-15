@@ -5,6 +5,20 @@ const images = {
             robin_female: '/img/RobinF.png',
             lucina: '/img/lucina.png',
             cordelia: '/img/Cordelia.png',
+            morgan_female: 'https://static.wikia.nocookie.net/fireemblem/images/0/09/Female_Morgan_FE13_Artwork.png/revision/latest/scale-to-width-down/203?cb=20161109031957',
+            morgan_male: 'https://static.wikia.nocookie.net/fireemblem/images/9/97/Male_Morgan_FE13_Artwork.png/revision/latest/scale-to-width-down/126?cb=20161118044621',
+            fredrick: 'https://static.wikia.nocookie.net/fireemblem/images/2/27/Frederik_Portrait.png/revision/latest/scale-to-width-down/250?cb=20161015064100',
+            sumia: 'https://static.wikia.nocookie.net/fireemblem/images/5/5f/Sumia.png/revision/latest/scale-to-width-down/250?cb=20161009083936',
+            olivia: 'https://static.wikia.nocookie.net/legendsofthemultiuniverse/images/9/99/3b0c41d05c6689bfa10ee7fd5901433e.png/revision/latest?cb=20220313172959',
+            maribelle: 'https://static.wikia.nocookie.net/fireemblem/images/3/32/Maribelle_confession.png/revision/latest/scale-to-width-down/250?cb=20231223031002',
+            frederick: 'https://static.wikia.nocookie.net/fireemblem/images/2/27/Frederik_Portrait.png/revision/latest/scale-to-width-down/250?cb=20161015064100',
+            miriel: 'https://static.wikia.nocookie.net/fireemblem/images/b/b7/Miriel.png/revision/latest?cb=20160603023035',
+            sully: 'https://static.wikia.nocookie.net/fireemblem/images/5/54/Sully_Portrait.png/revision/latest/scale-to-width-down/250?cb=20210424061604',
+            cherche: 'https://static.wikia.nocookie.net/nintendo/images/c/c1/FEA_Cherche_Portrait.png/revision/latest/scale-to-width-down/250?cb=20171013014155&path-prefix=en',
+            panne: 'https://static.wikia.nocookie.net/fireemblem/images/a/ac/Velvet_Portrait.png/revision/latest?cb=20160529042901',
+            walhart: 'https://static.wikia.nocookie.net/fireemblem/images/3/3f/Walhart_portrait.png/revision/latest?cb=20151114034243',
+            tharja: 'https://static.wikia.nocookie.net/p__/images/a/a7/TharjaPortrait_FE13.png/revision/latest?cb=20201130001543&path-prefix=protagonist',
+            nowi: 'https://static.wikia.nocookie.net/fireemblem/images/1/15/Nono_Kakusei.png/revision/latest/scale-to-width-down/177?cb=20160503214051',
             morgan: 'https://static.wikia.nocookie.net/fireemblem/images/8/89/Morgan_%28FE13_Artwork%29.png/revision/latest/scale-to-width-down/1200?cb=20161120025538',
             cynthia: 'https://static.wikia.nocookie.net/fireemblem/images/3/37/Cynthia_Kakusei.png/revision/latest?cb=20160529044003',
             inigo: 'https://static.wikia.nocookie.net/fireemblem/images/8/8e/Inigo_Standard.png/revision/latest/scale-to-width-down/250?cb=20161015035930',
@@ -145,7 +159,8 @@ const characters = [
 
         const childRoster = {
             lucina: { name: 'Lucina', skills: ['Dual Strike', 'Aether', 'Swordfaire', 'Bond'] },
-            morgan: { name: 'Morgan', skills: ['Aether', 'Galeforce', 'Tomefaire', 'Bond'] },
+            morgan_female: { name: 'Morgan', gender: 'female', skills: ['Aether', 'Galeforce', 'Tomefaire', 'Bond'] },
+            morgan_male: { name: 'Morgan', gender: 'male', skills: ['Aether', 'Galeforce', 'Tomefaire', 'Bond'] },
             owain: { name: 'Owain', skills: ['Aether', 'Vantage', 'Bond', 'Dark Magic +2'] },
             inigo: { name: 'Inigo', skills: ['Dual Strike', 'Aether', 'Swordfaire', 'Charm'] },
             brady: { name: 'Brady', skills: ['Aegis', 'Heals', 'Bond', 'Dual Support'] },
@@ -170,21 +185,13 @@ const characters = [
             cherche: childRoster.gerome,
             panne: childRoster.yarne,
             tharja: childRoster.noire,
-            nowi: childRoster.nah,
-            lucina: childRoster.morgan
-        };
-
-        const parentChildRules = {
-            chrom: childRoster.lucina,
-            robin: childRoster.morgan,
-            robin_female: childRoster.morgan
+            nowi: childRoster.nah
         };
 
         const familyLegend = [
-            { child: 'Lucina', mother: 'Female Robin', father: 'Chrom' },
-            { child: 'Lucina', mother: 'Any eligible mother except Female Robin', father: 'Chrom' },
-            { child: 'Morgan', mother: 'Lucina', father: 'Male Robin' },
-            { child: 'Morgan', mother: 'Female Robin', father: 'Any eligible father except Chrom' },
+            { child: 'Lucina', mother: 'Any eligible mother', father: 'Chrom' },
+            { child: 'Female Morgan', mother: 'Any eligible mother', father: 'Male Robin' },
+            { child: 'Male Morgan', mother: 'Female Robin', father: 'Any eligible father except Chrom' },
             { child: 'Inigo', mother: 'Olivia', father: 'Any eligible father' },
             { child: 'Owain', mother: 'Lissa', father: 'Any eligible father' },
             { child: 'Brady', mother: 'Maribelle', father: 'Any eligible father' },
@@ -268,11 +275,19 @@ const characters = [
         }
 
         function getChildForPair(mother, father) {
-            if (mother.id === 'robin_female' && father.id === 'chrom') {
+            if (father.id === 'chrom') {
                 return childRoster.lucina;
             }
 
-            return parentChildRules[father.id] || parentChildRules[mother.id] || motherChildMap[mother.id];
+            if (mother.id === 'robin_female') {
+                return childRoster.morgan_male;
+            }
+
+            if (father.id === 'robin') {
+                return childRoster.morgan_female;
+            }
+
+            return motherChildMap[mother.id];
         }
 
         function getChildId(child) {
@@ -307,14 +322,25 @@ const characters = [
                 return;
             }
 
-            const child = getChildForPair(mother, father) || {
-                name: `${mother.name} & ${father.name}'s Child`,
-                skills: mergeSkills(mother, father)
-            };
+            const child = getChildForPair(mother, father);
+
+            if (!child) {
+                result.innerHTML = `
+                    <h2>No unique child assigned</h2>
+                    <div class="character-images">${[
+                        renderCharacterImage(mother, 'Mother'),
+                        renderCharacterImage(father, 'Father')
+                    ].join('')}</div>
+                    <p><strong>Mother:</strong> ${mother.name} | <strong>Father:</strong> ${father.name}</p>
+                    <p>This pairing does not have a unique child in the current database.</p>
+                `;
+                return;
+            }
 
             const skillMarkup = child.skills.map((skill) => `<span class="skill">${skill}</span>`).join(', ');
             const childId = getChildId(child);
             const childImage = childId ? renderCharacterImage({ id: childId, name: child.name }, 'Child') : '';
+            const genderMarkup = child.gender ? `<p><strong>Gender:</strong> ${child.gender}</p>` : '';
             const parentImages = [
                 renderCharacterImage(mother, 'Mother'),
                 renderCharacterImage(father, 'Father')
@@ -324,6 +350,7 @@ const characters = [
                 <h2>${child.name}</h2>
                 <div class="character-images">${parentImages}${childImage}</div>
                 <p><strong>Mother:</strong> ${mother.name} | <strong>Father:</strong> ${father.name}</p>
+                ${genderMarkup}
                 <p><strong>Abilities:</strong> ${skillMarkup}</p>
             `;
         }
@@ -336,9 +363,9 @@ const characters = [
             if (legendTableBody) {
                 legendTableBody.innerHTML = familyLegend.map((entry) => `
                     <tr>
-                        <td>${entry.child}</td>
-                        <td>${entry.mother}</td>
                         <td>${entry.father}</td>
+                        <td>${entry.mother}</td>
+                        <td>${entry.child}</td>
                     </tr>
                 `).join('');
             }
