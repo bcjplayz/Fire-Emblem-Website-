@@ -41,6 +41,8 @@ jobs:
           mkdir _site
           cp index.html _site/
           cp -r root _site/
+          # Fixes absolute paths (="/root/) in all HTML files to work seamlessly on GitHub Pages
+          find _site -type f -name "*.html" -exec sed -i 's|="/root/|="root/|g' {} +
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
