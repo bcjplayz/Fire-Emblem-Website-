@@ -41,3 +41,17 @@ footer {
   position: fixed;
   width: 84%;
 }
+
+.home-copy {
+  margin: 42px 8% 100px;
+  max-width: 620px;
+}
+
+.home-copy h3 {
+  margin: 0 0 20px;
+  max-width: 420px;
+}
+
+.home-copy p {
+  margin: 0 0 16px;
+}
