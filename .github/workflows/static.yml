@@ -1,32 +1,24 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: ["main"] # Change to "master" if your default branch uses that name
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps:deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,31 +27,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # This creates an environment that perfectly maps your absolute VS Code roots
-      - name: Stage files for deployment
-        run: |
-          mkdir _site
-          
-          # 1. Copies your base files (index.html, etc.) directly into the site root folder
-          cp index.html _site/ 2>/dev/null || true
-          cp README.md _site/ 2>/dev/null || true
-          cp Ideas.txt _site/ 2>/dev/null || true
-          
-          # 2. Creates the real absolute "/root" folder exactly as your paths expect it
-          mkdir -p _site/root
-          cp -r root/* _site/root/
-          
-          # 3. Dynamic absolute URL patch
-          # Extracts the repository name manually to ensure it never prints blank
-          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
-          
-          # Injecting exact context base paths into the top of every HTML page
-          find _site -type f -name "*.html" -exec sed -i "s|<head>|<head><base href=\"/$REPO_NAME/\">|g" {} +
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '_site'
+          # Modify '.' if your static files reside in a subdirectory (e.g., './dist' or './public')
+          path: '.' 
 
       - name: Deploy to GitHub Pages
         id: deployment
