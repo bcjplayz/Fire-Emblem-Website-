@@ -69,6 +69,34 @@ button {
   margin-bottom: 20px;
 }
 
+.character-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 16px 0;
+}
+
+.character-image-card {
+  margin: 0;
+  text-align: center;
+}
+
+.character-image {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(215, 169, 79, 0.35);
+  border-radius: 8px;
+  display: block;
+  height: 200px;
+  object-fit: contain;
+  width: 150px;
+}
+
+.character-image-card figcaption {
+  color: #dfe3d3;
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
 .family-legend h2 {
   margin-top: 0;
 }

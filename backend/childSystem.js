@@ -1,16 +1,23 @@
 const images = {
-            lissa: 'img/lissa.png',
-            chrom: 'img/chrom.png',
-            robin: 'img/robin.png',
-            robin_female: 'img/robin_female.png',
-            sumia: 'img/sumia.png',
-            lucina: 'img/lucina.png',
-            maribelle: 'img/maribelle.png',
-            frederick: 'img/frederick.png',
-            miriel: 'img/miriel.png',
-            cordelia: 'img/cordelia.png',
-            walhart: 'img/walhart.png',
-            tharja: 'img/tharja.png'
+            lissa: '/img/Lissa.png',
+            chrom: '/img/Chrom.png',
+            robin: '/img/Robin.png',
+            robin_female: '/img/RobinF.png',
+            lucina: '/img/lucina.png',
+            cordelia: '/img/Cordelia.png',
+            morgan: 'https://static.wikia.nocookie.net/fireemblem/images/8/89/Morgan_%28FE13_Artwork%29.png/revision/latest/scale-to-width-down/1200?cb=20161120025538',
+            cynthia: 'https://static.wikia.nocookie.net/fireemblem/images/3/37/Cynthia_Kakusei.png/revision/latest?cb=20160529044003',
+            inigo: 'https://static.wikia.nocookie.net/fireemblem/images/8/8e/Inigo_Standard.png/revision/latest/scale-to-width-down/250?cb=20161015035930',
+            owain: 'https://static.wikia.nocookie.net/heroes-villains/images/d/db/Owain.png/revision/latest?cb=20170402215433',
+            brady:  'https://static.wikia.nocookie.net/fireemblem/images/c/c1/Brady_%28FE13_Artwork%29.png/revision/latest?cb=20160704214503',
+            kjelle: 'https://static.wikia.nocookie.net/fireemblem/images/4/46/Dezel.png/revision/latest?cb=20160603023129',
+            laurent: 'https://static.wikia.nocookie.net/fireemblem/images/d/d8/FE13_Laurent.png/revision/latest?cb=20160810082622',
+            severa: 'https://static.wikia.nocookie.net/fireemblem/images/2/29/Severa.png/revision/latest?cb=20160420094019',
+            gerome: 'https://static.wikia.nocookie.net/fireemblem/images/2/28/Gerome.png/revision/latest?cb=20160529043928',
+            yarne: 'https://cdn.fireemblemwiki.org/thumb/2/2b/FEA_Yarne.png/1200px-FEA_Yarne.png',
+            noire: 'https://cdn.fireemblemwiki.org/2/23/FEA_Noire.png',
+            nah: 'https://static.wikia.nocookie.net/fireemblem/images/1/1c/Nah.png/revision/latest?cb=20160529044103'
+
 
 }
 
@@ -164,20 +171,20 @@ const characters = [
             panne: childRoster.yarne,
             tharja: childRoster.noire,
             nowi: childRoster.nah,
-            robin_female: childRoster.lucina,
             lucina: childRoster.morgan
         };
 
-        const specialChildren = {
-            'chrom|robin_female': childRoster.lucina,
-            'robin_female|chrom': childRoster.lucina,
-            'robin|lucina': childRoster.morgan,
-            'lucina|robin': childRoster.morgan
+        const parentChildRules = {
+            chrom: childRoster.lucina,
+            robin: childRoster.morgan,
+            robin_female: childRoster.morgan
         };
 
         const familyLegend = [
             { child: 'Lucina', mother: 'Female Robin', father: 'Chrom' },
+            { child: 'Lucina', mother: 'Any eligible mother except Female Robin', father: 'Chrom' },
             { child: 'Morgan', mother: 'Lucina', father: 'Male Robin' },
+            { child: 'Morgan', mother: 'Female Robin', father: 'Any eligible father except Chrom' },
             { child: 'Inigo', mother: 'Olivia', father: 'Any eligible father' },
             { child: 'Owain', mother: 'Lissa', father: 'Any eligible father' },
             { child: 'Brady', mother: 'Maribelle', father: 'Any eligible father' },
@@ -260,6 +267,33 @@ const characters = [
             return combined.slice(0, 5);
         }
 
+        function getChildForPair(mother, father) {
+            if (mother.id === 'robin_female' && father.id === 'chrom') {
+                return childRoster.lucina;
+            }
+
+            return parentChildRules[father.id] || parentChildRules[mother.id] || motherChildMap[mother.id];
+        }
+
+        function getChildId(child) {
+            return Object.entries(childRoster).find(([, rosterChild]) => rosterChild === child)?.[0];
+        }
+
+        function renderCharacterImage(character, role) {
+            const imageSource = images[character.id];
+
+            if (!imageSource) {
+                return '';
+            }
+
+            return `
+                <figure class="character-image-card">
+                    <img src="${imageSource}" alt="${character.name}" class="character-image" width="150" height="200">
+                    <figcaption>${role}: ${character.name}</figcaption>
+                </figure>
+            `;
+        }
+
         function generateChild() {
             if (!enforceValidParents()) {
                 return;
@@ -273,16 +307,22 @@ const characters = [
                 return;
             }
 
-            const exactMatch = specialChildren[`${mother.id}|${father.id}`] || specialChildren[`${father.id}|${mother.id}`] || motherChildMap[mother.id];
-            const child = exactMatch || {
+            const child = getChildForPair(mother, father) || {
                 name: `${mother.name} & ${father.name}'s Child`,
                 skills: mergeSkills(mother, father)
             };
 
             const skillMarkup = child.skills.map((skill) => `<span class="skill">${skill}</span>`).join(', ');
+            const childId = getChildId(child);
+            const childImage = childId ? renderCharacterImage({ id: childId, name: child.name }, 'Child') : '';
+            const parentImages = [
+                renderCharacterImage(mother, 'Mother'),
+                renderCharacterImage(father, 'Father')
+            ].join('');
 
             result.innerHTML = `
                 <h2>${child.name}</h2>
+                <div class="character-images">${parentImages}${childImage}</div>
                 <p><strong>Mother:</strong> ${mother.name} | <strong>Father:</strong> ${father.name}</p>
                 <p><strong>Abilities:</strong> ${skillMarkup}</p>
             `;
