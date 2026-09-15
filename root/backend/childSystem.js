@@ -1,5 +1,5 @@
 const images = {
-            lissa: '/img/Lissa.png',
+            lissa: '/root/img/Lissa.png',
             chrom: '/img/Chrom.png',
             robin: '/img/Robin.png',
             robin_female: '/img/RobinF.png',
