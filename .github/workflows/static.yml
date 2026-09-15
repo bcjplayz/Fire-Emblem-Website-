@@ -35,13 +35,18 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # Creates a temporary deployment directory containing both targets
+      - name: Stage files for deployment
+        run: |
+          mkdir _site
+          cp index.html _site/
+          cp -r root _site/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Points to the 'root' folder visible in the repository root
-          path: '.'
-          # Prevents GitHub from filtering out the 'root' folder
-          include-hidden-files: true
+          # Points to the newly staged folder containing all assets
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         id: deployment
