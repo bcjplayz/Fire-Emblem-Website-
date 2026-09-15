@@ -1,6 +1,6 @@
 const image_data = [
-  { alt: ["Marth", "Lucina"], options: ["../img/Marth.png", "../img/lucina.png"], name: ["Marth", "Lucina"] },
-  { alt: ["Robin", "RobinF"], options: ["../img/Robin.png", "../img/RobinF.png"], name: ["Robin", "Robin"] },
+  { alt: ["Marth", "Lucina"], options: ["img/Marth.png", "img/lucina.png"], name: ["Marth", "Lucina"] },
+  { alt: ["Robin", "RobinF"], options: ["img/Robin.png", "img/RobinF.png"], name: ["Robin", "Robin"] },
 ];
 
 function getFileName(src) {
