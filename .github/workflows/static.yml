@@ -35,14 +35,21 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Creates a temporary deployment directory containing both targets
+      # This creates an environment that tricks the browser into finding your absolute paths!
       - name: Stage files for deployment
         run: |
           mkdir _site
-          cp index.html _site/
-          cp -r root _site/
-          # Fixes absolute paths (="/root/) in all HTML files to work seamlessly on GitHub Pages
-          find _site -type f -name "*.html" -exec sed -i 's|="/root/|="root/|g' {} +
+          
+          # 1. Copies your index.html, README, etc. directly into the website root folder
+          cp index.html _site/ 2>/dev/null || true
+          
+          # 2. Re-creates your absolute "/root" folder exactly inside the website folder
+          mkdir -p _site/root
+          cp -r root/* _site/root/
+          
+          # 3. Dynamic absolute routing fix for HTML documents
+          # This injects a base path so the browser maps absolute "/root/" paths to the site subfolder
+          find _site -type f -name "*.html" -exec sed -i 's|<head>|<head><base href="/'${{ github.event.repository.name }}'/ ">|g' {} +
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
