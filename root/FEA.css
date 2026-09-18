@@ -33,6 +33,38 @@ nav .selected {
   color: #d7a94f;
 }
 
+.story-container {
+  display: grid;
+  gap: 22px;
+  margin: 40px auto 110px;
+  max-width: 1200px;
+  padding: 0 5%;
+}
+
+.story-card {
+  background: rgba(15, 18, 22, 0.72);
+  border: 1px solid rgba(215, 169, 79, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  padding: 28px 30px;
+  min-height: 240px;
+  width: 100%;
+  max-width: 1100px;
+  justify-self: center;
+}
+
+.story-card h2,
+.story-card h3 {
+  color: #f4d07a;
+  margin: 0 0 10px;
+}
+
+.story-card p {
+  color: #f0ebd8;
+  line-height: 1.7;
+  margin: 0;
+}
+
 footer {
   bottom: 0;
   display: flex;
