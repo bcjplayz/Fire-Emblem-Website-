@@ -100,3 +100,9 @@ footer {
 .home-copy p {
   margin: 0 0 16px;
 }
+
+@media (min-width: 600px) {
+  nav {
+    gap: 30px;
+    transform: translateX(50px);}
+    }
