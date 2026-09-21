@@ -141,7 +141,31 @@ button {
   background: rgba(255, 255, 255, 0.02);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
+  .topbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 12px;
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
   .controls {
     grid-template-columns: 1fr;
   }
@@ -158,22 +182,35 @@ button {
   display: flex;
   justify-content: space-between;
   padding: 20px 8%;
+  position: relative;
 }
 
 .title,
-nav a {
+.site-nav a {
   color: #f0ebd8;
   text-decoration: none;
 }
 
-nav {
+.site-nav {
   display: flex;
   gap: 20px;
 }
 
-nav a:hover,
-nav .selected {
+.site-nav a:hover,
+.site-nav .selected {
   color: #d7a94f;
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(240, 235, 216, 0.6);
+  border-radius: 6px;
+  color: #f0ebd8;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 6px 10px;
 }
 
 .overview-page {

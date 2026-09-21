@@ -8,8 +8,11 @@
 </head>
 <body>
 	<header class="topbar">
-		<a class="title">Fire Emblem: Awakening</a>
-		<nav>
+		<a href="index.html" class="title">Fire Emblem: Awakening</a>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+			☰
+		</button>
+		<nav id="site-nav" class="site-nav">
 			<a href="characters.html">Characters</a>
 			<a href="Support.html">Supports</a>
 			<a href="story.html">Story</a>
@@ -27,5 +30,17 @@
 	<footer>
 		<span>Fan-made page</span>
 	</footer>
+
+	<script>
+		const navToggle = document.querySelector('.nav-toggle');
+		const siteNav = document.querySelector('.site-nav');
+
+		if (navToggle && siteNav) {
+			navToggle.addEventListener('click', () => {
+				const isOpen = siteNav.classList.toggle('is-open');
+				navToggle.setAttribute('aria-expanded', String(isOpen));
+			});
+		}
+	</script>
 </body>
 </html>

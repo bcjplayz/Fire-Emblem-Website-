@@ -24,7 +24,10 @@ h1{
 <body>
 	<header class="topbar">
 		<a class="title" href="index.html">Fire Emblem: Awakening</a>
-		<nav>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+			☰
+		</button>
+		<nav id="site-nav" class="site-nav">
 			<a href="characters.html">Characters</a>
 			<a href="Support.html">Supports</a>
             <a href="story.html">Story</a>
@@ -34,4 +37,16 @@ h1{
 
 
 <h1>Map of Ylisse</h1>
+
+<script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteNav = document.querySelector('.site-nav');
+
+    if (navToggle && siteNav) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = siteNav.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+    }
+</script>
 </body>

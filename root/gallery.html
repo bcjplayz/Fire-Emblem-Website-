@@ -18,7 +18,10 @@ h1{
 <body>
 	<header class="topbar">
 		<a class="title" href="index.html">Fire Emblem: Awakening</a>
-		<nav>
+		<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+			☰
+		</button>
+		<nav id="site-nav" class="site-nav">
 			<a href="characters.html">Characters</a>
 			<a href="Support.html">Supports</a>
             <a href="story.html">Story</a>
@@ -30,4 +33,16 @@ h1{
 <h1>Image Gallery</h1>
 <img src="https://www.nintendoworldreport.com/media/27769/1/12.png" width="50%" height="50%">
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQculETpZzLtgro2fdC6zcqAo8khjz6sxtWRxYX2OSxx3MH4YvZ36MWMw3&s=10" width="50%" height="50%">
+
+<script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const siteNav = document.querySelector('.site-nav');
+
+    if (navToggle && siteNav) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = siteNav.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+    }
+</script>
 </body>
