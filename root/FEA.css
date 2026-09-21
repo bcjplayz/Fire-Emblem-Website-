@@ -12,9 +12,12 @@ body {
 .topbar {
   align-items: center;
   background: rgba(20, 25, 30, 0.85);
+  box-sizing: border-box;
   display: flex;
+  gap: 20px;
   justify-content: space-between;
   padding: 20px 8%;
+  width: 100%;
 }
 
 .title,
@@ -23,9 +26,15 @@ nav a {
   text-decoration: none;
 }
 
+.title {
+  white-space: nowrap;
+}
+
 nav {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: flex-end;
 }
 
 nav a:hover,
@@ -61,6 +70,17 @@ nav .selected {
 }
 
 @media (max-width: 600px) {
+  .topbar {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  nav {
+    justify-content: center;
+    width: 100%;
+  }
+
   .story-container {
     grid-template-columns: 1fr;
   }
@@ -101,8 +121,8 @@ footer {
   margin: 0 0 16px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 650px) {
   nav {
     gap: 30px;
-    transform: translateX(50px);}
-    }
+  }
+}
