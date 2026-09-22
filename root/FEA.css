@@ -58,6 +58,20 @@ body {
   user-select: none;
 }
 
+.nav-toggle:hover,
+.nav-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(240, 235, 216, 0.9);
+}
+
+.nav-toggle:active,
+.nav-toggle.is-active {
+  background: rgba(215, 169, 79, 0.18);
+  border-color: rgba(215, 169, 79, 0.8);
+  box-shadow: 0 0 0 2px rgba(215, 169, 79, 0.25);
+  transform: translateY(1px) scale(0.99);
+}
+
 .story-container {
   display: grid;
   grid-template-columns: repeat(3, minmax(220px, 1fr));

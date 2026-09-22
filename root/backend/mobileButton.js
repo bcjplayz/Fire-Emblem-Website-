@@ -11,6 +11,7 @@ if (navToggle && siteNav) {
 
     const setMenuState = (isOpen) => {
         siteNav.classList.toggle('is-open', isOpen);
+        navToggle.classList.toggle('is-active', isOpen);
         navToggle.setAttribute('aria-expanded', String(isOpen));
     };
 
