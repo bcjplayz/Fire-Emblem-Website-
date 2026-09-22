@@ -1,12 +1,17 @@
-const navToggle = document.querySelector('.nav-toggle');
-const siteNav = document.querySelector('.site-nav');
+document.addEventListener('DOMContentLoaded', () => {
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.querySelector('.site-nav');
 
-if (navToggle && siteNav) {
-    const toggleMenu = () => {
-        const isOpen = siteNav.classList.toggle('is-open');
-        navToggle.setAttribute('aria-expanded', String(isOpen));
-        document.getElementById("console").textContent += "worked?S"
-    };
+  if (!navToggle || !siteNav) return;
 
-    navToggle.addEventListener('click', toggleMenu);
-}
+  const toggleMenu = () => {
+    const isOpen = siteNav.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  };
+
+  navToggle.addEventListener('click', toggleMenu);
+  navToggle.addEventListener('touchstart', (event) => {
+    event.preventDefault();
+    toggleMenu();
+  }, { passive: false });
+});

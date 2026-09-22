@@ -96,7 +96,8 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 2;
+    z-index: 20;
+    pointer-events: auto;
   }
 
   .site-nav {
