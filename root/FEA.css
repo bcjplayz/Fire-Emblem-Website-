@@ -19,6 +19,7 @@ body {
   padding: 20px 8%;
   width: 100%;
   position: relative;
+  z-index: 1000;
 }
 
 .title,
@@ -72,6 +73,14 @@ body {
   transform: translateY(1px) scale(0.99);
 }
 
+/* Immediate pressed feedback for touch/pointer */
+.nav-toggle.is-pressed {
+  background: rgba(215, 169, 79, 0.26);
+  border-color: rgba(215, 169, 79, 0.95);
+  box-shadow: 0 8px 20px rgba(215, 169, 79, 0.12), 0 0 0 4px rgba(215, 169, 79, 0.10);
+  transform: translateY(1px) scale(0.985);
+}
+
 .story-container {
   display: grid;
   grid-template-columns: repeat(3, minmax(220px, 1fr));
@@ -110,7 +119,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 20;
+    z-index: 1001;
     pointer-events: auto;
   }
 
