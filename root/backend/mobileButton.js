@@ -8,9 +8,4 @@ if (navToggle && siteNav) {
     };
 
     navToggle.addEventListener('click', toggleMenu);
-
-    navToggle.addEventListener('touchstart', (event) => {
-        event.preventDefault();
-        toggleMenu();
-    }, { passive: false });
 }
