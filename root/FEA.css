@@ -19,7 +19,6 @@ body {
   padding: 20px 8%;
   width: 100%;
   position: relative;
-  z-index: 1000;
 }
 
 .title,
@@ -119,7 +118,6 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 1001;
     pointer-events: auto;
   }
 

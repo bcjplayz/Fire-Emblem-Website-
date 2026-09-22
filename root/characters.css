@@ -21,7 +21,6 @@ body {
   justify-content: space-between;
   padding: 20px 8%;
   position: relative;
-  z-index: 1000;
 }
 
 .title,
@@ -235,7 +234,6 @@ footer {
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 1001;
     pointer-events: auto;
   }
 
@@ -256,6 +254,20 @@ footer {
 
   .story-container {
     grid-template-columns: 1fr;
+  }
+  
+  /* Make character list single-column on small screens */
+  .character-list {
+    grid-template-columns: 1fr;
+  }
+
+  .character-card {
+    padding: 12px 14px;
+  }
+
+  .character-image {
+    width: 60%;
+    height: auto;
   }
 }
 .nav-toggle:hover,
