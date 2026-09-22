@@ -95,6 +95,8 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 2;
   }
 
   .site-nav {
@@ -104,6 +106,8 @@ body {
     align-items: center;
     gap: 12px;
     padding-top: 12px;
+    position: relative;
+    z-index: 1;
   }
 
   .site-nav.is-open {
