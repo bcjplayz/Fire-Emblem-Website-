@@ -31,17 +31,7 @@ h1{
 
 
 <h1>Map of Ylisse</h1>
-<img src="/root/img/Awakening_Map_official_art.jpg">
+<img src="/root/img/Awakening_Map_official_art.jpg" width="50%">
 
-<script>
-    const navToggle = document.querySelector('.nav-toggle');
-    const siteNav = document.querySelector('.site-nav');
-
-    if (navToggle && siteNav) {
-        navToggle.addEventListener('click', () => {
-            const isOpen = siteNav.classList.toggle('is-open');
-            navToggle.setAttribute('aria-expanded', String(isOpen));
-        });
-    }
-</script>
+<script src="/root/backend/mobileButton.js"></script>
 </body>
