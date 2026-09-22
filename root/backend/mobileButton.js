@@ -31,6 +31,13 @@ if (navToggle && siteNav) {
             /* ignore */
         }
     };
+    // indicate script loaded (visible on-device)
+    showDebug('mobileButton.js loaded');
+    // quick visual flash on the button to confirm script reached the element
+    try {
+        navToggle.style.outline = '3px solid rgba(215,169,79,0.95)';
+        setTimeout(() => { navToggle.style.outline = ''; }, 1200);
+    } catch (e) { /* ignore */ }
     // keep a simple clickable fallback commented for reference
     // navToggle.addEventListener('click', () => {
     //     const isOpen = siteNav.classList.toggle('is-open');
