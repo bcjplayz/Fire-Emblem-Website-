@@ -147,6 +147,20 @@ footer {
   margin: 0 0 16px;
 }
 
+.video-wrap {
+  margin: 30px 8% 0;
+  max-width: 760px;
+}
+
+.video-wrap iframe {
+  border: 0;
+  border-radius: 12px;
+  display: block;
+  width: min(100%, 700px);
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
 @media (min-width: 650px) {
   nav {
     gap: 30px;
