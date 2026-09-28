@@ -187,6 +187,8 @@ button {
   justify-content: space-between;
   padding: 20px 8%;
   position: relative;
+  box-shadow: 0px 10px 15px 0px rgba(255, 205, 26, 0.5);
+-webkit-box-shadow: 0px 10px 15px 0px rgba(255, 205, 26, 0.5);
 }
 
 .title{
@@ -197,6 +199,7 @@ button {
 .site-nav a {
   color: #f0ebd8;
   text-decoration: none;
+  font-family: none;
 }
 
 .site-nav {
