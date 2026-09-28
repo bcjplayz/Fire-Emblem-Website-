@@ -189,6 +189,10 @@ button {
   position: relative;
 }
 
+.title{
+  font-family: none;
+}
+
 .title,
 .site-nav a {
   color: #f0ebd8;
